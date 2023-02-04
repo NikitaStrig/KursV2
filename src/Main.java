@@ -18,27 +18,18 @@ public class Main {
         Appearsln YearlyTask = new YearlyTask(true);
         Appearsln OneTimeTack = new OneTimeTack(true);
         Map<Integer, Task> taskMap = new HashMap<>();
+        LocalDateTime time = LocalDateTime.of(2022, 03, 23, 05, 00, 00);
         taskMap.put(Task.ide, new Task("sdsd", LocalDateTime.of(2023, 01, 20, 05, 00, 00), "sdsdsdd", WeaklyTask));
         taskMap.put(Task.ide, new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), "sdsdsdd", YearlyTask));
         taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), "sdsdsdd", OneTimeTack));
         taskMap.put(Task.ide, new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), "sdsdsdd", OneTimeTack));
-       // addTask(taskMap, WeaklyTask);
+        // addTask(taskMap, WeaklyTask);
         // проверка
-        // time();
-       ByAllByDate(taskMap);
-       // ByAllByDate(taskMap, ltd(date));
-      //  Scanner scan = new Scanner(System.in);
-      //  System.out.print("Введите дату для задач [yyyy-MM-dd] ");
-      //  String str = scan.nextLine();
-      //  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-      //  LocalDateTime formatDateTime = LocalDateTime.parse(str, formatter);
-      //  System.out.println(formatDateTime);
-      //  for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
-      //      System.out.println(task.getValue().getDateTime());
-         //            }
+        //time(taskMap);
+        ByAllByDate(taskMap, time);
 
-          }
 
+    }
 
 
     public static void addTask(Map map, Appearsln appearsln) {
@@ -68,32 +59,34 @@ public class Main {
         return str;
     }
 
-    public static void ByAllByDate(Map<Integer, Task> taskMap) {
+    public static void ByAllByDate(Map<Integer, Task> taskMap, LocalDateTime l) {
         for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
-            if (ldt() == task.getValue().getDateTime()) {
-               System.out.println("Заплонировано на " + task.getValue().getDateTime() + " задача/задачи"
-                        + task.getKey() + " " + task.getValue());
-            }
-   }
-   }
+            System.out.println("Заплонировано на " + task.getValue().getDateTime() + " задача/задачи"
+                    + task.getKey() + " " + task.getValue());
+        }
+    }
 
-    public static LocalDateTime ldt () {
+
+    public static LocalDateTime ldt() {
         Scanner scan = new Scanner(System.in);
         System.out.print("Введите дату для задач [yyyy-MM-dd] ");
         String str = scan.nextLine();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime formatDateTime = LocalDateTime.parse(str, formatter);
-        System.out.println(formatDateTime);
         return formatDateTime;
     }
-    public static LocalDateTime time(Map<Integer, Task> taskMap){
-        LocalDateTime ltd = LocalDateTime.now();
-        for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
-            ltd = task.getValue().getDateTime();
-            // System.out.println(task.getValue().getDateTime());
-        } return ltd;
-    }
+
+    //public static LocalDateTime time(Map<Integer, Task> taskMap) {
+    //      LocalDateTime ltd = LocalDateTime.now();
+
+    //  for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
+    //     ltd = task.getValue().getDateTime();
+    //    System.out.println(ltd);
+    //  } return ltd;
+    // }
+    // }
 }
+
 
 
 
