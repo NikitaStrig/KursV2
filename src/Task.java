@@ -1,0 +1,55 @@
+import appearsln.Appearsln;
+
+import java.time.LocalDateTime;
+public class Task<A extends Appearsln>{
+  private String title;
+  private int id;
+  private LocalDateTime dateTime;
+  private String deccription;
+  Appearsln appearsln;
+  static int ide = 1;
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
+  public String getTitle() {
+    return title;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public LocalDateTime getDateTime() {
+    return dateTime;
+  }
+
+  public String getDeccription() {
+    return deccription;
+  }
+
+  public Task(String title, LocalDateTime dateTime, String deccription, A appearsln) {
+    this.title = title;
+    this.dateTime = dateTime;
+    this.deccription = deccription;
+    this.appearsln = appearsln;
+    this.id = ide;
+    ide++;
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
+
+  @Override
+  public String toString() {
+    return "Task{" +
+            ", title='" + title + '\'' +
+            ", dateTime=" + dateTime +
+            ", deccription='" + deccription + '\'' +
+            '}';
+  }
+}
