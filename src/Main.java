@@ -14,6 +14,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        int delete = 2;
         Appearsln WeaklyTask = new WeaklyTask(true);
         Appearsln YearlyTask = new YearlyTask(true);
         Appearsln OneTimeTack = new OneTimeTack(true);
@@ -23,10 +24,8 @@ public class Main {
         taskMap.put(Task.ide, new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), "sdsdsdd", YearlyTask));
         taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), "sdsdsdd", OneTimeTack));
         taskMap.put(Task.ide, new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), "sdsdsdd", OneTimeTack));
-        // addTask(taskMap, WeaklyTask);
-        // проверка
-        //time(taskMap);
-        ByAllByDate(taskMap, time);
+        // ++ addTask(taskMap, WeaklyTask);
+        //++ deleteTask(taskMap, delete);
 
 
     }
@@ -76,6 +75,48 @@ public class Main {
         return formatDateTime;
     }
 
+    public static void deleteTask(Map<Integer, Task> taskMap, int i) {
+        System.out.println("delete task " + taskMap.get(i));
+        taskMap.remove(i);
+        for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
+            System.out.println(task.getKey() + " " + task.getValue());
+        }
+
+    }
+
+    public static void pwd(Map<Integer, Task> taskMap) {
+        for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
+            // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            // LocalDateTime formatDateTime = LocalDateTime.parse(str, formatter);
+            LocalDateTime now = task.getValue().getDateTime();
+            LocalDateTime minusDays = now.plusDays(1);
+            System.out.println("следующий повтор задач: " + minusDays + " " +);
+        }
+    }
+    public static void dfd(Appearsln appearsln,Map<Integer, Task> taskMap) {
+        for (Task task : taskMap) {
+            if (task.getDateTime() - >= 0) {
+                if (task.getAppearsln() == WeaklyTask) {
+                    long i = task.getDateTime() + weekly;
+                    task.setDateTime(i);
+                }
+            }
+        }
+    }
+
+
+        for (Task task : taskMap) {
+            if (task.getDateTime() -  >= 0) {
+                if (task.getAppearsln() ==  ) {
+                    long i = task.getDateTime() + weekly;
+                    task.setDateTime(i);
+                }
+
+    }
+}
+
+
+
     //public static LocalDateTime time(Map<Integer, Task> taskMap) {
     //      LocalDateTime ltd = LocalDateTime.now();
 
@@ -85,7 +126,22 @@ public class Main {
     //  } return ltd;
     // }
     // }
-}
+
+
+
+ //   LocalDateTime now = LocalDateTime.now(); // 2018-01-21T09:11:48.486298
+ //   LocalDateTime minusNanos = now.plusNanos(780_000_000); // 2018-01-21T09:11:49.266298
+ //   LocalDateTime minusSeconds = now.plusSeconds(59); // 2018-01-21T09:12:47.486298
+ //   LocalDateTime minusMinutes = now.plusMinutes(5); // 2018-01-21T09:16:48.486298
+ //   LocalDateTime minusHours = now.plusHours(3); // 2018-01-21T12:11:48.486298
+ //   LocalDateTime minusDays = now.plusDays(7); // 2018-01-28T09:11:48.486298
+ //   LocalDateTime minusWeeks = now.plusWeeks(3); // 2018-02-11T09:11:48.486298
+ //   LocalDateTime minusMonths = now.plusMonths(5); // 2018-06-21T09:11:48.486298
+ //   LocalDateTime minusYears = now.plusYears(2); // 2020-01-21T09:11:48.486298
+ //   LocalDateTime minusPeriod = now.plus(Period.ofWeeks(2)); // 2018-02-04T09:11:48.486298
+ //   LocalDateTime minusDecades = now.plus(1, ChronoUnit.DECADES); // 2028-01-21T09:11:48.486298
+
+
 
 
 

@@ -44,6 +44,14 @@ public class Task<A extends Appearsln>{
     return super.hashCode();
   }
 
+  public void setDateTime(LocalDateTime dateTime) {
+    this.dateTime = dateTime;
+  }
+
+  public Appearsln getAppearsln() {
+    return appearsln;
+  }
+
   @Override
   public String toString() {
     return "Task{" +
