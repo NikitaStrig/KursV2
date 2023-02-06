@@ -19,13 +19,17 @@ public class Main {
         Appearsln YearlyTask = new YearlyTask(true);
         Appearsln OneTimeTack = new OneTimeTack(true);
         Map<Integer, Task> taskMap = new HashMap<>();
-        LocalDateTime time = LocalDateTime.of(2022, 03, 23, 05, 00, 00);
+        LocalDate date = LocalDate.of(2022, 3, 23);
         taskMap.put(Task.ide, new Task("sdsd", LocalDateTime.of(2023, 01, 20, 05, 00, 00), "sdsdsdd", WeaklyTask));
         taskMap.put(Task.ide, new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), "sdsdsdd", YearlyTask));
         taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), "sdsdsdd", OneTimeTack));
         taskMap.put(Task.ide, new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), "sdsdsdd", OneTimeTack));
         // ++ addTask(taskMap, WeaklyTask);
+        Collection<Task> values = taskMap.values();
+        ArrayList<Task> listvalues = new ArrayList<>(values);
+        ByAllByDate(listvalues,date);
         //++ deleteTask(taskMap, delete);
+
 
 
     }
@@ -58,22 +62,24 @@ public class Main {
         return str;
     }
 
-    public static void ByAllByDate(Map<Integer, Task> taskMap, LocalDateTime l) {
-        for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
-            System.out.println("Заплонировано на " + task.getValue().getDateTime() + " задача/задачи"
-                    + task.getKey() + " " + task.getValue());
+    public static void ByAllByDate(ArrayList<Task> listvalues, LocalDate date) {
+        for (int i = 0; i< listvalues.size(); i++){
+            LocalDate dateList = listvalues.get(i).getDateTime().toLocalDate();
+            if (dateList.isEqual(date)){
+                System.out.println(listvalues.get(i).getDateTime());
+            }
         }
+        NoByAllByDate(listvalues,date);
     }
+public static void NoByAllByDate(ArrayList<Task> listvalues, LocalDate date){
+    for (int i = 0; i< listvalues.size(); i++){
+        LocalDate dateList = listvalues.get(i).getDateTime().toLocalDate();
+        if (!dateList.isEqual(date)){
+        }
+    }System.out.println("no");
+}
 
 
-    public static LocalDateTime ldt() {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Введите дату для задач [yyyy-MM-dd] ");
-        String str = scan.nextLine();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime formatDateTime = LocalDateTime.parse(str, formatter);
-        return formatDateTime;
-    }
 
     public static void deleteTask(Map<Integer, Task> taskMap, int i) {
         System.out.println("delete task " + taskMap.get(i));
@@ -82,35 +88,6 @@ public class Main {
             System.out.println(task.getKey() + " " + task.getValue());
         }
 
-    }
-
-    public static void pwd(Map<Integer, Task> taskMap) {
-        for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
-            // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-            // LocalDateTime formatDateTime = LocalDateTime.parse(str, formatter);
-            LocalDateTime now = task.getValue().getDateTime();
-            LocalDateTime minusDays = now.plusDays(1);
-            System.out.println("следующий повтор задач: " + minusDays + " " +);
-        }
-    }
-    public static void dfd(Appearsln appearsln,Map<Integer, Task> taskMap) {
-        for (Task task : taskMap) {
-            if (task.getDateTime() - >= 0) {
-                if (task.getAppearsln() == WeaklyTask) {
-                    long i = task.getDateTime() + weekly;
-                    task.setDateTime(i);
-                }
-            }
-        }
-    }
-
-
-        for (Task task : taskMap) {
-            if (task.getDateTime() -  >= 0) {
-                if (task.getAppearsln() ==  ) {
-                    long i = task.getDateTime() + weekly;
-                    task.setDateTime(i);
-                }
 
     }
 }
