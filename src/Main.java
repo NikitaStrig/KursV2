@@ -19,7 +19,7 @@ public class Main {
         Appearsln YearlyTask = new YearlyTask(true);
         Appearsln OneTimeTack = new OneTimeTack(true);
         Map<Integer, Task> taskMap = new HashMap<>();
-        LocalDate date = LocalDate.of(2022, 3, 23);
+        LocalDate date = LocalDate.of(2022, 4, 23);
         taskMap.put(Task.ide, new Task("sdsd", LocalDateTime.of(2023, 01, 20, 05, 00, 00), "sdsdsdd", WeaklyTask));
         taskMap.put(Task.ide, new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), "sdsdsdd", YearlyTask));
         taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), "sdsdsdd", OneTimeTack));
@@ -76,7 +76,7 @@ public static void NoByAllByDate(ArrayList<Task> listvalues, LocalDate date){
         LocalDate dateList = listvalues.get(i).getDateTime().toLocalDate();
         if (!dateList.isEqual(date)){
         }
-    }System.out.println("no");
+    } System.out.println("no");
 }
 
 
