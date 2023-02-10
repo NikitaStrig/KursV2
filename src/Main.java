@@ -31,8 +31,8 @@ public class Main {
         // WeaklyTask(WeaklyTask,listOfValues);
         //YearlyTask(YearlyTask,listOfValues);
         // OneTimeTack(OneTimeTack,listOfValues);
-        // deleteTaskHistory(taskMap,deleteTaskHistory);
-        // restoreTaskHistory(taskMap,deleteTaskHistory);
+         deleteTaskHistory(taskMap,deleteTaskHistory);
+         restoreTaskHistory(taskMap,deleteTaskHistory);
         //  groupByAllByDate(listOfValues,groupByAllByDate1(listOfValues));
 
     }
