@@ -1,8 +1,7 @@
-import appearsln.Appearsln;
-import appearsln.OneTimeTack;
-import appearsln.WeaklyTask;
-import appearsln.YearlyTask;
+import appearsln.*;
 import sun.nio.ch.Interruptible;
+
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.*;
@@ -31,9 +30,10 @@ public class Main {
         // WeaklyTask(WeaklyTask,listOfValues);
         //YearlyTask(YearlyTask,listOfValues);
         // OneTimeTack(OneTimeTack,listOfValues);
-         deleteTaskHistory(taskMap,deleteTaskHistory);
-         restoreTaskHistory(taskMap,deleteTaskHistory);
+       //  deleteTaskHistory(taskMap,deleteTaskHistory);
+        // restoreTaskHistory(taskMap,deleteTaskHistory);
         //  groupByAllByDate(listOfValues,groupByAllByDate1(listOfValues));
+      //  addDateTime();
 
     }
 
@@ -43,13 +43,17 @@ public class Main {
     }
 
     public static LocalDateTime addDateTime() {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Введите дату и время в формате [yyyy-MM-dd HH:mm] ");
+       Scanner scan = new Scanner(System.in);
+       System.out.print("Введите дату и время в формате [yyyy-MM-dd HH:mm] ");
         String str = scan.nextLine();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime formatDateTime = LocalDateTime.parse(str, formatter);
         return formatDateTime;
     }
+
+
+
+
 
     public static String titleScan() {
         Scanner scan = new Scanner(System.in);

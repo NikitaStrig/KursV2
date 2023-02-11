@@ -32,8 +32,14 @@ public class Task<A extends Appearsln>{
 
   public Task(String title, LocalDateTime dateTime, String deccription, A appearsln) {
     this.title = title;
+    if (this.title == " " || this.title == null) {
+      this.title = "Defoult";
+    }
     this.dateTime = dateTime;
     this.deccription = deccription;
+    if (this.deccription == " " || this.deccription == null) {
+      this.deccription = "Defoult";
+    }
     this.appearsln = appearsln;
     this.id = ide;
     ide++;
