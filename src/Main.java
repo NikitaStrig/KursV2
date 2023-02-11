@@ -15,13 +15,15 @@ public class Main {
         Appearsln WeaklyTask = new WeaklyTask(true);
         Appearsln YearlyTask = new YearlyTask(true);
         Appearsln OneTimeTack = new OneTimeTack(true);
+        Type Work = new Type(true);
+        Type Personal = new Type(true);
         Map<Integer, Task> taskMap = new HashMap<>();
         ArrayList<Task> deleteTaskHistory = new ArrayList<>();
         LocalDate date = LocalDate.of(2022, 05, 23);
-        taskMap.put(Task.ide, new Task("sdsd", LocalDateTime.of(2023, 01, 20, 05, 00, 00), "sdsdsdd", WeaklyTask));
-        taskMap.put(Task.ide, new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), "sdsdsdd",YearlyTask ));
-        taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), "sdsdsdd", OneTimeTack));
-        taskMap.put(Task.ide, new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), "sdsdsdd", YearlyTask));
+        taskMap.put(Task.ide, new Task(Work,"sdsd", LocalDateTime.of(2023, 01, 20, 05, 00, 00), "sdsdsdd", WeaklyTask));
+        taskMap.put(Task.ide, new Task(Personal,"sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), "sdsdsdd",YearlyTask ));
+        taskMap.put(Task.ide, new Task(Work,"sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), "sdsdsdd", OneTimeTack));
+        taskMap.put(Task.ide, new Task(Personal,"sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), "sdsdsdd", YearlyTask));
         //addTask(taskMap, WeaklyTask);
         // addTask(taskMap, OneTimeTack);
         Collection<Task> values = taskMap.values();
@@ -38,8 +40,8 @@ public class Main {
     }
 
 
-    public static void addTask(Map map, Appearsln appearsln) {
-        map.put(Task.ide, new Task(titleScan(), addDateTime(), disSkan(), appearsln));
+    public static void addTask(Map map, Appearsln appearsln,Type type) {
+        map.put(Task.ide, new Task(type ,titleScan(), addDateTime(), disSkan(), appearsln));
     }
 
     public static LocalDateTime addDateTime() {

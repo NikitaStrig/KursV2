@@ -4,9 +4,10 @@ import java.time.LocalDateTime;
 public class Task<A extends Appearsln>{
   private String title;
   private int id;
+  private Type type;
   private LocalDateTime dateTime;
   private String deccription;
-  Appearsln appearsln;
+  private Appearsln appearsln;
   static int ide = 1;
 
   public void setTitle(String title) {
@@ -30,7 +31,8 @@ public class Task<A extends Appearsln>{
     return deccription;
   }
 
-  public Task(String title, LocalDateTime dateTime, String deccription, A appearsln) {
+  public Task(Type type, String title, LocalDateTime dateTime, String deccription, A appearsln) {
+    this.type = type;
     this.title = title;
     if (this.title == " " || this.title == null) {
       this.title = "Defoult";
