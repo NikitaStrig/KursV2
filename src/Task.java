@@ -6,7 +6,11 @@ import java.util.Objects;
 public class Task<A extends Appearsln>{
   private String title;
   private int id;
-
+  Type type;
+  private LocalDateTime dateTime;
+  private String deccription;
+  private Appearsln appearsln;
+  static int ide = 1;
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -14,12 +18,6 @@ public class Task<A extends Appearsln>{
     Task<?> task = (Task<?>) o;
     return id == task.id && Objects.equals(title, task.title) && dateTime.equals(task.dateTime) && Objects.equals(deccription, task.deccription) && Objects.equals(appearsln, task.appearsln);
   }
-
-
-  private LocalDateTime dateTime;
-  private String deccription;
-  private Appearsln appearsln;
-  static int ide = 1;
 
   public void setTitle(String title) {
     this.title = title;
@@ -42,7 +40,8 @@ public class Task<A extends Appearsln>{
     return deccription;
   }
 
-  public Task(String title, LocalDateTime dateTime, String deccription, A appearsln) {
+  public Task(Type type,String title, LocalDateTime dateTime, String deccription, A appearsln) {
+    this.type = type;
     this.title = title;
     if (this.title == " " || this.title == null) {
       this.title = "Defoult";
