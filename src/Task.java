@@ -6,8 +6,8 @@ import java.util.Objects;
 public class Task<A extends Appearsln>{
   private String title;
   private int id;
-  Type type;
   private LocalDateTime dateTime;
+  Type type;
   private String deccription;
   private Appearsln appearsln;
   static int ide = 1;
@@ -40,13 +40,13 @@ public class Task<A extends Appearsln>{
     return deccription;
   }
 
-  public Task(Type type,String title, LocalDateTime dateTime, String deccription, A appearsln) {
-    this.type = type;
+  public Task(String title, LocalDateTime dateTime,Type type, String deccription, A appearsln) {
     this.title = title;
     if (this.title == " " || this.title == null) {
       this.title = "Defoult";
     }
     this.dateTime = dateTime;
+    this.type = type;
     this.deccription = deccription;
     if (this.deccription == " " || this.deccription == null) {
       this.deccription = "Defoult";
