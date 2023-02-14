@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.*;
+import java.util.function.Consumer;
+
 public class Main {
     public static void main(String[] args) {
         Appearsln WeaklyTask = new WeaklyTask(true);
@@ -23,6 +25,9 @@ public class Main {
         LocalDate date = LocalDate.of(2022, 05, 23);
         LocalTime startTime  = LocalTime.of(8,00,00);
         LocalTime endTime  = LocalTime.of(17,00,00);
+        Date currentDate = new Date();
+        LocalDateTime ldt = LocalDateTime.ofInstant(currentDate.toInstant(), ZoneId.systemDefault());
+        LocalDate ldt1 = ldt.toLocalDate();
         taskMap.put(Task.ide, new Task("sdsd", LocalDateTime.of(2023, 01, 20, 05, 00, 00),Type.PERSONAL, "sdsdsdd", WeaklyTask));
         taskMap.put(Task.ide, new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00),Type.WORK ,"sdsdsdd",YearlyTask ));
         taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00),Type.PERSONAL,"sdsdsdd", OneTimeTack));
@@ -48,14 +53,31 @@ public class Main {
    //     map.put(Task.ide, new Task(titleScan(), addDateTime(), disSkan(), appearsln));
   //  }
 
-    public static LocalDateTime addDateTime() {
-       Scanner scan = new Scanner(System.in);
-       System.out.print("Введите дату и время в формате [yyyy-MM-dd HH:mm] ");
+    public static LocalDateTime addDateTime(LocalDate ltd1) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Введите дату и время в формате [yyyy-MM-dd HH:mm] ");
         String str = scan.nextLine();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime formatDateTime = LocalDateTime.parse(str, formatter);
+        LocalDate formatDateTime1 = formatDateTime.toLocalDate();
+        try {
+            addDateTimeС(formatDateTime1, ltd1);
+        } catch (Exp e) {
+            System.out.println("Не верно, Введите повторно коректно дату");
+            String str1 = scan.nextLine();
+            DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            LocalDateTime formatDateTimeC = LocalDateTime.parse(str1, formatter1);
+            return formatDateTimeC;
+        }
         return formatDateTime;
     }
+
+        public static void addDateTimeС(LocalDate ltd1, LocalDate ltd2) throws Exp {
+            if (ltd1.isBefore(ltd2)) {
+                throw new Exp();
+
+            }
+        }
 
     public static String titleScan() {
         Scanner scan = new Scanner(System.in);
@@ -186,7 +208,7 @@ public class Main {
         historyDelete.add(taskMap.get(id));
         taskMap.remove(id);
         for (int i = 0; i < historyDelete.size(); i++) {
-            System.out.println("Архив " + "\n" + historyDelete.get(i).getId() +" "+ historyDelete.get(i));
+            taskPrint(historyDelete);
         }
         System.out.println("------------------");
         for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
@@ -200,16 +222,19 @@ public class Main {
         int id = Integer.parseInt(scan.nextLine());
         for (int i = 0; i < historyDelete.size(); i++) {
             taskMap.put(historyDelete.get(i).getId(),historyDelete.get(i));
-            System.out.println("Востановлена задача задача с ID " + historyDelete.get(i).getId());
+            System.out.println("Востановлена задача задача с ID ");
+            taskPrint(historyDelete);
         }
         for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
             System.out.println(task.getKey() + " " + task.getValue());
         }
-
-
-
     }
-
+public static void taskPrint(ArrayList<Task> listOfValues){
+    Consumer<Task> taskConsumer = task -> System.out.println(task.getId() +" " + task.getTitle()
+    + " " + task.getDateTime() + " " + task.getDeccription());
+    for (Task task : listOfValues)
+        taskConsumer.accept(task);
+}
 
 }
 
