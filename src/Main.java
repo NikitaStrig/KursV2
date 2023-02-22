@@ -33,13 +33,13 @@ public class Main {
         taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00),Type.PERSONAL,"sdsdsdd", OneTimeTack));
         taskMap.put(Task.ide, new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00),Type.WORK,"sdsdsdd", DailyTasc));
 
-        //addTask(taskMap, OneTimeTack,ldt1,Type.PERSONAL );
+        addTask(taskMap, OneTimeTack,ldt1,Type.PERSONAL );
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
-       // ByAllByDate(listOfValues,dateScan());
+        ByAllByDate(listOfValues,dateScan());
          deleteTaskHistory(taskMap,deleteTaskHistory);
-       //  restoreTaskHistory(taskMap,deleteTaskHistory);
-       //  AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
+         restoreTaskHistory(taskMap,deleteTaskHistory);
+         AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
 
     }
 
