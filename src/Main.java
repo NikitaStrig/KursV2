@@ -21,7 +21,7 @@ public class Main {
         Appearsln DailyTasc = new DailyTasc(true);
         Appearsln MonthlyTack = new MonthlyTack(true);
         Map<Integer, Task> taskMap = new HashMap<>();
-       // ArrayList<Task> deleteTaskHistory = new ArrayList<>();
+        ArrayList<Task> deleteTaskHistory = new ArrayList<>();
         LocalDate date = LocalDate.of(2022, 05, 23);
         LocalTime startTime  = LocalTime.of(8,00,00);
         LocalTime endTime  = LocalTime.of(17,00,00);
@@ -32,26 +32,22 @@ public class Main {
         taskMap.put(Task.ide, new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00),Type.WORK ,"sdsdsdd",YearlyTask ));
         taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00),Type.PERSONAL,"sdsdsdd", OneTimeTack));
         taskMap.put(Task.ide, new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00),Type.WORK,"sdsdsdd", DailyTasc));
-       // addTask(taskMap, WeaklyTask);
-        // addTask(taskMap, OneTimeTack, Personal);
+         addTask(taskMap, OneTimeTack,ldt1,Type.PERSONAL );
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
-        //ByAllByDate(listOfValues,dateScan());
-        // WeaklyTask(WeaklyTask,listOfValues);
-        //YearlyTask(YearlyTask,listOfValues);
-        // OneTimeTack(OneTimeTack,listOfValues);
-       //  deleteTaskHistory(taskMap,deleteTaskHistory);
-        // restoreTaskHistory(taskMap,deleteTaskHistory);
-        //  groupByAllByDate(listOfValues,groupByAllByDate1(listOfValues));
-      //  addDateTime();
+        ByAllByDate(listOfValues,dateScan());
+         deleteTaskHistory(taskMap,deleteTaskHistory);
+         restoreTaskHistory(taskMap,deleteTaskHistory);
+
+
         AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
 
     }
 
 
-  //  public static void addTask(Map map, Appearsln appearsln, ) {
-   //     map.put(Task.ide, new Task(titleScan(), addDateTime(), disSkan(), appearsln));
-  //  }
+    public static void addTask(Map map, Appearsln appearsln,LocalDate ltd1,Type type ) {
+        map.put(Task.ide, new Task(titleScan(), addDateTime(ltd1),type, disSkan(), appearsln));
+   }
 
     public static LocalDateTime addDateTime(LocalDate ltd1) {
         Scanner scan = new Scanner(System.in);
@@ -190,16 +186,7 @@ public class Main {
 
 
 
-    //----------------------------------
-    //  public static void deleteTask(Map<Integer, Task> taskMap, int i) {
-    //   System.out.println("delete task " + taskMap.get(i));
-    //   taskMap.remove(i);
-    //  for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
-    //      System.out.println(task.getKey() + " " + task.getValue());
-    // }
 
-    //  }
-    //----------------------------------
     public static void deleteTaskHistory(Map<Integer, Task> taskMap,ArrayList<Task> historyDelete) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Введите ID задачи для удаления");
