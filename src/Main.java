@@ -32,15 +32,14 @@ public class Main {
         taskMap.put(Task.ide, new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00),Type.WORK ,"sdsdsdd",YearlyTask ));
         taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00),Type.PERSONAL,"sdsdsdd", OneTimeTack));
         taskMap.put(Task.ide, new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00),Type.WORK,"sdsdsdd", DailyTasc));
-         addTask(taskMap, OneTimeTack,ldt1,Type.PERSONAL );
+
+        //addTask(taskMap, OneTimeTack,ldt1,Type.PERSONAL );
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
-        ByAllByDate(listOfValues,dateScan());
+       // ByAllByDate(listOfValues,dateScan());
          deleteTaskHistory(taskMap,deleteTaskHistory);
-         restoreTaskHistory(taskMap,deleteTaskHistory);
-
-
-        AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
+       //  restoreTaskHistory(taskMap,deleteTaskHistory);
+       //  AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
 
     }
 
@@ -81,17 +80,6 @@ public class Main {
         String str = scan.nextLine();
         return str;
     }
-   // public static Type typeEx() {
-     //   LocalTime startTime = LocalTime.of(8, 00, 00);
-      //  LocalTime endTime = LocalTime.of(17, 00, 00);
-      //  if (.getDateTime().toLocalTime().isAfter(startTime) &&
-       //         .getDateTime().toLocalTime().isBefore(endTime)) {
-       //     return Type.WORK;
-      //  } else {
-       //     return Type.PERSONAL;
-      //  }
-  //  }
-
     public static String disSkan() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Введите описание задачи");
@@ -191,17 +179,41 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Введите ID задачи для удаления");
         int id = Integer.parseInt(scan.nextLine());
-        System.out.println("Удалена и перенесена в архив задача с ID " + taskMap.get(id).getId());
-        historyDelete.add(taskMap.get(id));
-        taskMap.remove(id);
-        for (int i = 0; i < historyDelete.size(); i++) {
-            taskPrint(historyDelete);
-        }
-        System.out.println("------------------");
-        for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
-            System.out.println(task.getKey() + " " + task.getValue());
+        try {
+            delExp(taskMap,id);
+            System.out.println("Удалена и перенесена в архив задача с ID " + taskMap.get(id).getId());
+            historyDelete.add(taskMap.get(id));
+            taskMap.remove(id);
+            for (int i = 0; i < historyDelete.size(); i++) {
+                taskPrint(historyDelete);
+            }
+            System.out.println("------------------");
+            for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
+                System.out.println(task.getKey() + " " + task.getValue());
+            }
+        } catch (Exp e) {
+            System.out.println("Задачи с таким ID не существует, повторите попытку");
+            int id1 = Integer.parseInt(scan.nextLine());
+            System.out.println("Удалена и перенесена в архив задача с ID " + taskMap.get(id1).getId());
+            historyDelete.add(taskMap.get(id1));
+            taskMap.remove(id1);
+            for (int i = 0; i < historyDelete.size(); i++) {
+                taskPrint(historyDelete);
+            }
+            System.out.println("------------------");
+            for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
+                System.out.println(task.getKey() + " " + task.getValue());
+            }
         }
 
+
+    }
+
+    public static void delExp(Map<Integer, Task> taskMap, int test ) throws Exp {
+        for (Map.Entry<Integer, Task> task : taskMap.entrySet())  {
+            if (task.getKey() != test)
+                throw new Exp();
+        }
     }
     public static void restoreTaskHistory(Map<Integer, Task> taskMap,ArrayList<Task> historyDelete) {
         Scanner scan = new Scanner(System.in);

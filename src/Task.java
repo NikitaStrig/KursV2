@@ -40,7 +40,11 @@ public class Task<A extends Appearsln>{
     return deccription;
   }
 
-  public Task(String title, LocalDateTime dateTime,Type type, String deccription, A appearsln) {
+  public Type getType() {
+    return type;
+  }
+
+  public Task(String title, LocalDateTime dateTime, Type type, String deccription, A appearsln) {
     this.title = title;
     if (this.title == " " || this.title == null) {
       this.title = "Defoult";
