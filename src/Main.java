@@ -10,11 +10,10 @@ import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
-        Appearsln WeaklyTask = new WeaklyTask(true);
-        Appearsln YearlyTask = new YearlyTask(true);
-        Appearsln OneTimeTack = new OneTimeTack(true);
-        Appearsln DailyTasc = new DailyTasc(true);
-        Appearsln MonthlyTack = new MonthlyTack(true);
+        Appearsln WeaklyTask = new WeaklyTask(true);Appearsln YearlyTask = new YearlyTask(true);
+       Appearsln OneTimeTack = new OneTimeTack(true);
+      Appearsln DailyTasc = new DailyTasc(true);
+       Appearsln MonthlyTack = new MonthlyTack(true);
         Map<Integer, Task> taskMap = new HashMap<>();
         ArrayList<Task> deleteTaskHistory = new ArrayList<>();
         Date currentDate = new Date();
@@ -25,16 +24,17 @@ public class Main {
         taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00),Type.PERSONAL,"sdsdsdd", OneTimeTack));
         taskMap.put(Task.ide, new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00),Type.WORK,"sdsdsdd", DailyTasc));
 
-        addTask(taskMap, OneTimeTack,ldt1);
+      //  addTask(taskMap, Appearsln.OneTimeTack,ldt1);
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
         for (int i = 0; i < listOfValues.size(); i++) {
             System.out.println(listOfValues.get(i));
         }
+
        // ByAllByDate(listOfValues,dateScan());
        //  deleteTaskHistory(taskMap,deleteTaskHistory);
         // restoreTaskHistory(taskMap,deleteTaskHistory);
-        // AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
+         AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
 
     }
 
