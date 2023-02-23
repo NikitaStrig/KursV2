@@ -24,7 +24,7 @@ public class Main {
         taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00),Type.PERSONAL,"sdsdsdd", OneTimeTack));
         taskMap.put(Task.ide, new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00),Type.WORK,"sdsdsdd", DailyTasc));
 
-      //  addTask(taskMap, Appearsln.OneTimeTack,ldt1);
+        addTask(taskMap,OneTimeTack,ldt1);
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
         for (int i = 0; i < listOfValues.size(); i++) {
@@ -34,7 +34,7 @@ public class Main {
        // ByAllByDate(listOfValues,dateScan());
        //  deleteTaskHistory(taskMap,deleteTaskHistory);
         // restoreTaskHistory(taskMap,deleteTaskHistory);
-         AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
+     //    AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
 
     }
 
@@ -62,12 +62,11 @@ public class Main {
         return formatDateTime;
     }
     public static Type workPersTiket() {
-      // Type rte = Type.WORK;
         Scanner scan = new Scanner(System.in);
-        System.out.print("Кукую задачу вы хотите создать L - Личная  Р - рабочая");
+        System.out.print("Кукую задачу вы хотите создать, по умолчанию создается личная задача, для создания рабочей задаче введите  Р ");
         String str = scan.nextLine();
-        if (str.equals("P")){
-            return Type.PERSONAL;}
+            if (str.equals("P")){
+                return Type.PERSONAL;}
         return Type.WORK;
     }
 
