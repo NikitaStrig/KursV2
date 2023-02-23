@@ -17,9 +17,6 @@ public class Main {
         Appearsln MonthlyTack = new MonthlyTack(true);
         Map<Integer, Task> taskMap = new HashMap<>();
         ArrayList<Task> deleteTaskHistory = new ArrayList<>();
-        LocalDate date = LocalDate.of(2022, 05, 23);
-        LocalTime startTime  = LocalTime.of(8,00,00);
-        LocalTime endTime  = LocalTime.of(17,00,00);
         Date currentDate = new Date();
         LocalDateTime ldt = LocalDateTime.ofInstant(currentDate.toInstant(), ZoneId.systemDefault());
         LocalDate ldt1 = ldt.toLocalDate();
@@ -28,19 +25,22 @@ public class Main {
         taskMap.put(Task.ide, new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00),Type.PERSONAL,"sdsdsdd", OneTimeTack));
         taskMap.put(Task.ide, new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00),Type.WORK,"sdsdsdd", DailyTasc));
 
-        addTask(taskMap, OneTimeTack,ldt1,Type.PERSONAL );
+        addTask(taskMap, OneTimeTack,ldt1);
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
-        ByAllByDate(listOfValues,dateScan());
-         deleteTaskHistory(taskMap,deleteTaskHistory);
-         restoreTaskHistory(taskMap,deleteTaskHistory);
-         AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
+        for (int i = 0; i < listOfValues.size(); i++) {
+            System.out.println(listOfValues.get(i));
+        }
+       // ByAllByDate(listOfValues,dateScan());
+       //  deleteTaskHistory(taskMap,deleteTaskHistory);
+        // restoreTaskHistory(taskMap,deleteTaskHistory);
+        // AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
 
     }
 
 
-    public static void addTask(Map map, Appearsln appearsln,LocalDate ltd1,Type type ) {
-        map.put(Task.ide, new Task(titleScan(), addDateTime(ltd1),type, disSkan(), appearsln));
+    public static void addTask(Map map, Appearsln appearsln,LocalDate ltd1 ) {
+        map.put(Task.ide, new Task(titleScan(), addDateTime(ltd1),workPersTiket(), disSkan(), appearsln));
    }
 
     public static LocalDateTime addDateTime(LocalDate ltd1) {
@@ -60,6 +60,15 @@ public class Main {
             return formatDateTimeC;
         }
         return formatDateTime;
+    }
+    public static Type workPersTiket() {
+      // Type rte = Type.WORK;
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Кукую задачу вы хотите создать L - Личная  Р - рабочая");
+        String str = scan.nextLine();
+        if (str.equals("P")){
+            return Type.PERSONAL;}
+        return Type.WORK;
     }
 
         public static void addDateTimeС(LocalDate ltd1, LocalDate ltd2) throws Exp {

@@ -79,6 +79,7 @@ public class Task<A extends Appearsln>{
             ", title='" + title + '\'' +
             ", dateTime=" + dateTime +
             ", deccription='" + deccription + '\'' +
+            ", Type='" + type + '\'' +
             '}';
   }
 }
