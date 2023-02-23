@@ -103,13 +103,12 @@ public class Main {
             LocalDate dateList = listOfValues.get(i).getDateTime().toLocalDate();
             if (!dateList.isEqual(date)) {
             }
-        } System.out.println("на данную дату задач нет");
+        }
     }
     public static LocalDate dateScan() {
         Scanner scan = new Scanner(System.in);
         System.out.print("Введите дату для поиска задач [yyyy-MM-dd] ");
         String str = scan.nextLine();
-        // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate formatDateTime = LocalDate.parse(str);
         return formatDateTime;
     }
@@ -237,19 +236,3 @@ public static void taskPrint(ArrayList<Task> listOfValues){
 
 }
 
-
-
-
-
-
-//   LocalDateTime now = LocalDateTime.now(); // 2018-01-21T09:11:48.486298
-//   LocalDateTime minusNanos = now.plusNanos(780_000_000); // 2018-01-21T09:11:49.266298
-//   LocalDateTime minusSeconds = now.plusSeconds(59); // 2018-01-21T09:12:47.486298
-//   LocalDateTime minusMinutes = now.plusMinutes(5); // 2018-01-21T09:16:48.486298
-//   LocalDateTime minusHours = now.plusHours(3); // 2018-01-21T12:11:48.486298
-//   LocalDateTime minusDays = now.plusDays(7); // 2018-01-28T09:11:48.486298
-//   LocalDateTime minusWeeks = now.plusWeeks(3); // 2018-02-11T09:11:48.486298
-//   LocalDateTime minusMonths = now.plusMonths(5); // 2018-06-21T09:11:48.486298
-//   LocalDateTime minusYears = now.plusYears(2); // 2020-01-21T09:11:48.486298
-//   LocalDateTime minusPeriod = now.plus(Period.ofWeeks(2)); // 2018-02-04T09:11:48.486298
-//   LocalDateTime minusDecades = now.plus(1, ChronoUnit.DECADES); // 2028-01-21T09:11:48.486298
