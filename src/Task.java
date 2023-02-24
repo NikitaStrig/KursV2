@@ -3,21 +3,23 @@ import appearsln.Appearsln;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Task<A extends Appearsln>{
+public class Task{
   private String title;
   private int id;
   private LocalDateTime dateTime;
-  Type type;
+  private Type type;
   private String deccription;
   private Appearsln appearsln;
-  static int ide = 1;
+  private static int ide = 1;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Task<?> task = (Task<?>) o;
-    return id == task.id && Objects.equals(title, task.title) && dateTime.equals(task.dateTime) && Objects.equals(deccription, task.deccription) && Objects.equals(appearsln, task.appearsln);
+    Task task = (Task) o;
+    return id == task.id && Objects.equals(title, task.title) && Objects.equals(dateTime, task.dateTime) && type == task.type && Objects.equals(deccription, task.deccription) && Objects.equals(appearsln, task.appearsln);
   }
+
 
   public void setTitle(String title) {
     this.title = title;
@@ -44,7 +46,7 @@ public class Task<A extends Appearsln>{
     return type;
   }
 
-  public Task(String title, LocalDateTime dateTime, Type type, String deccription, A appearsln) {
+  public Task(String title, LocalDateTime dateTime, Type type, String deccription, Appearsln appearsln) {
     this.title = title;
     if (this.title == " " || this.title == null) {
       this.title = "Defoult";
