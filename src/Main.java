@@ -21,7 +21,7 @@ public class Main {
         taskMap.put(Task.getIde(), new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd",Appearsln. OneTimeTack));
         taskMap.put(Task.getIde(), new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", Appearsln.DailyTasc));
 
-       // addTask(taskMap, OneTimeTack, ldt1);
+        addTask(taskMap, Appearsln.DailyTasc, ldt1);
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
         for (int i = 0; i < listOfValues.size(); i++) {
@@ -39,9 +39,9 @@ public class Main {
 
 
 
-    // public static void addTask(Map map, appearsln.Appearsln appearsln, LocalDate ltd1) {
-      //  map.put(getId(), new Task(titleScan(), addDateTime(ltd1), workPersTiket(), disSkan(), appearsln));
- //   }
+     public static void addTask(Map map, appearsln.Appearsln appearsln, LocalDate ltd1) {
+        map.put(Task.getIde(), new Task(titleScan(), addDateTime(ltd1), workPersTiket(), disSkan(), appearsln));
+    }
 
     public static LocalDateTime addDateTime(LocalDate ltd1) {
         Scanner scan = new Scanner(System.in);
