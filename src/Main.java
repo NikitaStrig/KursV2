@@ -21,7 +21,7 @@ public class Main {
         taskMap.put(Task.getIde(), new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd",Appearsln. OneTimeTack));
         taskMap.put(Task.getIde(), new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", Appearsln.DailyTasc));
 
-        addTask(taskMap, Appearsln.DailyTasc, ldt1);
+        addTask(taskMap, ldt1);
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
         for (int i = 0; i < listOfValues.size(); i++) {
@@ -30,7 +30,7 @@ public class Main {
         // ByAllByDate(listOfValues,dateScan());
          //deleteTaskHistory(taskMap,deleteTaskHistory);
         // restoreTaskHistory(taskMap,deleteTaskHistory);
-            AperTimeTack(listOfValues);
+        AperTimeTack(listOfValues);
 
     }
 
@@ -38,9 +38,33 @@ public class Main {
 
 
 
-     public static void addTask(Map map, appearsln.Appearsln appearsln, LocalDate ltd1) {
-        map.put(Task.getIde(), new Task(titleScan(), addDateTime(ltd1), workPersTiket(), disSkan(), appearsln));
+     public static void addTask(Map map, LocalDate ltd1) {
+        map.put(Task.getIde(), new Task(titleScan(), addDateTime(ltd1), workPersTiket(), disSkan(), appAper()));
     }
+
+    public static Appearsln appAper(){
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Задачу с какой повторяемостью вы хотите создать: " + "\n" +  "1 - ежедневый повтор. " +"\n"+
+                "2 - повтор раз в неделю" +"\n"+
+                "3 - повтор раз в месяц " +"\n"+
+                "4 - повтор один раз в год." +"\n"+
+                " Если ни чего не выбрать зада не будет повторятся");
+        String str = scan.nextLine();
+        if (str.equals("1")) {
+            return Appearsln.DailyTasc;
+        }
+        if (str.equals("2")) {
+            return Appearsln.WeaklyTask;
+        }
+        if (str.equals("3")) {
+            return Appearsln.MonthlyTack;
+        }
+        if (str.equals("4")) {
+            return Appearsln.YearlyTask;
+        }
+        return Appearsln.OneTimeTack;
+    }
+
 
     public static LocalDateTime addDateTime(LocalDate ltd1) {
         Scanner scan = new Scanner(System.in);
