@@ -27,7 +27,6 @@ public class Main {
         for (int i = 0; i < listOfValues.size(); i++) {
             System.out.println(listOfValues.get(i).getId() + " " + listOfValues.get(i));
         }
-
         // ByAllByDate(listOfValues,dateScan());
          //deleteTaskHistory(taskMap,deleteTaskHistory);
         // restoreTaskHistory(taskMap,deleteTaskHistory);
