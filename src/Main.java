@@ -11,20 +11,15 @@ import java.util.function.Consumer;
 public class Main {
     public static void main(String[] args) {
 
-        Appearsln WeaklyTask = new WeaklyTask(true);
-        Appearsln YearlyTask = new YearlyTask(true);
-        Appearsln OneTimeTack = new OneTimeTack(true);
-        Appearsln DailyTasc = new DailyTasc(true);
-        Appearsln MonthlyTack = new MonthlyTack(true);
         Map<Integer, Task> taskMap = new HashMap<>();
         ArrayList<Task> deleteTaskHistory = new ArrayList<>();
         Date currentDate = new Date();
         LocalDateTime ldt = LocalDateTime.ofInstant(currentDate.toInstant(), ZoneId.systemDefault());
         LocalDate ldt1 = ldt.toLocalDate();
-        taskMap.put(Task.getIde(), new Task("sdsd", LocalDateTime.of(2023, 01, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd", WeaklyTask));
-        taskMap.put(Task.getIde(), new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", YearlyTask));
-        taskMap.put(Task.getIde(), new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd", OneTimeTack));
-        taskMap.put(Task.getIde(), new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", DailyTasc));
+        taskMap.put(Task.getIde(), new Task("sdsd", LocalDateTime.of(2023, 01, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.WeaklyTask));
+        taskMap.put(Task.getIde(), new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", Appearsln.YearlyTask));
+        taskMap.put(Task.getIde(), new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd",Appearsln. OneTimeTack));
+        taskMap.put(Task.getIde(), new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", Appearsln.DailyTasc));
 
        // addTask(taskMap, OneTimeTack, ldt1);
         Collection<Task> values = taskMap.values();
@@ -34,9 +29,9 @@ public class Main {
         }
 
         // ByAllByDate(listOfValues,dateScan());
-         deleteTaskHistory(taskMap,deleteTaskHistory);
+         //deleteTaskHistory(taskMap,deleteTaskHistory);
         // restoreTaskHistory(taskMap,deleteTaskHistory);
-        //    AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
+            AperTimeTack(listOfValues);
 
     }
 
@@ -44,7 +39,7 @@ public class Main {
 
 
 
-    // public static void addTask(Map map, Appearsln appearsln, LocalDate ltd1) {
+    // public static void addTask(Map map, appearsln.Appearsln appearsln, LocalDate ltd1) {
       //  map.put(getId(), new Task(titleScan(), addDateTime(ltd1), workPersTiket(), disSkan(), appearsln));
  //   }
 
@@ -175,17 +170,28 @@ public class Main {
         }
     }
 
-    public static void AperTimeTack(Appearsln OneTimeTack,
-                                    Appearsln MonthlyTack,
-                                    Appearsln WeaklyTask,
-                                    Appearsln YearlyTask,
-                                    Appearsln DailyTasc,
-                                    ArrayList<Task> listOfValues) {
-        DailyTasc(DailyTasc, listOfValues);
-        MonthlyTack(MonthlyTack, listOfValues);
-        WeaklyTask(WeaklyTask, listOfValues);
-        YearlyTask(YearlyTask, listOfValues);
-        OneTimeTack(OneTimeTack, listOfValues);
+    public static void AperTimeTack(ArrayList<Task> listOfValues){
+        for (int i = 0; i < listOfValues.size(); i++) {
+            if (Appearsln.OneTimeTack == listOfValues.get(i).getAppearsln()){
+                System.out.println("Данная задача не повторяетчся " + listOfValues.get(i).getTitle() + " " + listOfValues.get(i).getDateTime());
+            }
+            if (Appearsln.YearlyTask == listOfValues.get(i).getAppearsln()) {
+                LocalDateTime dateList = listOfValues.get(i).getDateTime().plusYears(1);
+                System.out.println("Следующий повтор задачи " + listOfValues.get(i).getTitle() + " " + dateList);
+            }
+            if (Appearsln.WeaklyTask == listOfValues.get(i).getAppearsln()) {
+                LocalDateTime dateList = listOfValues.get(i).getDateTime().plusWeeks(1);
+                System.out.println("Следующий повтор задачи " + listOfValues.get(i).getTitle() + " " + dateList);
+            }
+            if (Appearsln.MonthlyTack == listOfValues.get(i).getAppearsln()) {
+                LocalDateTime dateList = listOfValues.get(i).getDateTime().plusMonths(1);
+                System.out.println("Следующий повтор задачи " + listOfValues.get(i).getTitle() + " " + dateList);
+            }
+                if (Appearsln.DailyTasc == listOfValues.get(i).getAppearsln()) {
+                    LocalDateTime dateList = listOfValues.get(i).getDateTime().plusDays(1);
+                    System.out.println("Следующий повтор задачи " + listOfValues.get(i).getTitle() + " " + dateList);
+                }
+        }
     }
 
 
