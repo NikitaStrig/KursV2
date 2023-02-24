@@ -5,12 +5,12 @@ import java.util.Objects;
 
 public class Task{
   private String title;
-  private int id;
+  private  int id;
   private LocalDateTime dateTime;
   private Type type;
   private String deccription;
   private Appearsln appearsln;
-  private static int ide = 1;
+ private static int ide = 1;
 
   @Override
   public boolean equals(Object o) {
@@ -30,12 +30,17 @@ public class Task{
     return title;
   }
 
-  public int getId() {
-    return id;
-  }
 
   public LocalDateTime getDateTime() {
     return dateTime;
+  }
+
+  public static int getIde() {
+    return ide;
+  }
+
+  public  int getId() {
+    return id;
   }
 
   public String getDeccription() {
@@ -48,20 +53,19 @@ public class Task{
 
   public Task(String title, LocalDateTime dateTime, Type type, String deccription, Appearsln appearsln) {
     this.title = title;
-    if (this.title == " " || this.title == null) {
+    if (this.title.equals(" ") || this.title == null) {
       this.title = "Defoult";
     }
     this.dateTime = dateTime;
     this.type = type;
     this.deccription = deccription;
-    if (this.deccription == " " || this.deccription == null) {
+    if (this.deccription.equals(" ") || this.deccription == null) {
       this.deccription = "Defoult";
     }
     this.appearsln = appearsln;
     this.id = ide;
     ide++;
   }
-
   @Override
   public int hashCode() {
     return super.hashCode();
@@ -78,7 +82,7 @@ public class Task{
   @Override
   public String toString() {
     return "Task{" +
-            ", title='" + title + '\'' +
+            " title='" + title + '\'' +
             ", dateTime=" + dateTime +
             ", deccription='" + deccription + '\'' +
             ", Type='" + type + '\'' +

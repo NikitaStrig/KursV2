@@ -21,29 +21,32 @@ public class Main {
         Date currentDate = new Date();
         LocalDateTime ldt = LocalDateTime.ofInstant(currentDate.toInstant(), ZoneId.systemDefault());
         LocalDate ldt1 = ldt.toLocalDate();
-        taskMap.put(getId(), new Task("sdsd", LocalDateTime.of(2023, 01, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd", WeaklyTask));
-        taskMap.put(getId(), new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", YearlyTask));
-        taskMap.put(getId(), new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd", OneTimeTack));
-        taskMap.put(getId(), new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", DailyTasc));
+        taskMap.put(Task.getIde(), new Task("sdsd", LocalDateTime.of(2023, 01, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd", WeaklyTask));
+        taskMap.put(Task.getIde(), new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", YearlyTask));
+        taskMap.put(Task.getIde(), new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd", OneTimeTack));
+        taskMap.put(Task.getIde(), new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", DailyTasc));
 
-        addTask(taskMap, OneTimeTack, ldt1);
+       // addTask(taskMap, OneTimeTack, ldt1);
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
         for (int i = 0; i < listOfValues.size(); i++) {
-            System.out.println(listOfValues.get(i));
+            System.out.println(listOfValues.get(i).getId() + " " + listOfValues.get(i));
         }
 
         // ByAllByDate(listOfValues,dateScan());
-        //  deleteTaskHistory(taskMap,deleteTaskHistory);
+         deleteTaskHistory(taskMap,deleteTaskHistory);
         // restoreTaskHistory(taskMap,deleteTaskHistory);
         //    AperTimeTack(OneTimeTack, MonthlyTack, WeaklyTask, YearlyTask, DailyTasc,listOfValues);
 
     }
 
 
-    public static void addTask(Map map, Appearsln appearsln, LocalDate ltd1) {
-        map.put(getId(), new Task(titleScan(), addDateTime(ltd1), workPersTiket(), disSkan(), appearsln));
-    }
+
+
+
+    // public static void addTask(Map map, Appearsln appearsln, LocalDate ltd1) {
+      //  map.put(getId(), new Task(titleScan(), addDateTime(ltd1), workPersTiket(), disSkan(), appearsln));
+ //   }
 
     public static LocalDateTime addDateTime(LocalDate ltd1) {
         Scanner scan = new Scanner(System.in);
@@ -66,7 +69,7 @@ public class Main {
 
     public static Type workPersTiket() {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Кукую задачу вы хотите создать, по умолчанию создается личная задача, для создания рабочей задаче введите  Р ");
+        System.out.print("Какую задачу вы хотите создать, по умолчанию создается личная задача, для создания рабочей задаче введите  Р ");
         String str = scan.nextLine();
         if (str.equals("P")) {
             return Type.PERSONAL;
@@ -190,8 +193,6 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Введите ID задачи для удаления");
         int id = Integer.parseInt(scan.nextLine());
-        try {
-            delExp(taskMap, id);
             System.out.println("Удалена и перенесена в архив задача с ID " + taskMap.get(id).getId());
             historyDelete.add(taskMap.get(id));
             taskMap.remove(id);
@@ -201,29 +202,18 @@ public class Main {
             System.out.println("------------------");
             for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
                 System.out.println(task.getKey() + " " + task.getValue());
-            }
-        } catch (Exp e) {
-            System.out.println("Задачи с таким ID не существует, повторите попытку");
-            int id1 = Integer.parseInt(scan.nextLine());
-            System.out.println("Удалена и перенесена в архив задача с ID " + taskMap.get(id1).getId());
-            historyDelete.add(taskMap.get(id1));
-            taskMap.remove(id1);
-            for (int i = 0; i < historyDelete.size(); i++) {
-                taskPrint(historyDelete);
-            }
-            System.out.println("------------------");
-            for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
-                System.out.println(task.getKey() + " " + task.getValue());
-            }
         }
 
 
     }
 
     public static void delExp(Map<Integer, Task> taskMap, int test) throws Exp {
-        for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
-            if (task.getKey() != test)
+        Collection<Task> values = taskMap.values();
+        ArrayList<Task> listOfValues = new ArrayList<>(values);
+        for (int i = 0; i < listOfValues.size(); i++) {
+            if (test != listOfValues.get(i).getId()){
                 throw new Exp();
+            }
         }
     }
 
@@ -248,8 +238,8 @@ public class Main {
             taskConsumer.accept(task);
     }
 
-    private static Integer getId() {
-        return getId();
-    }
+
+
+
 }
 
