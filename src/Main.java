@@ -21,7 +21,8 @@ public class Main {
         taskMap.put(Task.getIde(), new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd",Appearsln. OneTimeTack));
         taskMap.put(Task.getIde(), new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", Appearsln.DailyTasc));
 
-        addTask(taskMap, ldt1);
+     //   addTask(taskMap, ldt1);
+        gererikTask(taskMap);
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
         for (int i = 0; i < listOfValues.size(); i++) {
@@ -30,7 +31,7 @@ public class Main {
         // ByAllByDate(listOfValues,dateScan());
          //deleteTaskHistory(taskMap,deleteTaskHistory);
         // restoreTaskHistory(taskMap,deleteTaskHistory);
-        AperTimeTack(listOfValues);
+       // AperTimeTack(listOfValues);
 
     }
 
@@ -144,6 +145,18 @@ public class Main {
         return formatDateTime;
     }
 
+    public static void gererikTask(Map<Integer, Task> taskMap){
+        for (int i = 0; i < 2 ; i++) {
+            for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
+                if (task.getValue().getAppearsln() == Appearsln.DailyTasc) {
+                    taskMap.put(Task.getIde(), new Task(task.getValue().getTitle(), task.getValue().getDateTime().plusDays(1),
+                            task.getValue().getType(), task.getValue().getDeccription(), task.getValue().getAppearsln()));
+                }
+                // System.out.println(task.getKey() + " " + task.getValue());
+
+            }
+        }
+    }
     public static void DailyTasc(Appearsln DailyTasc, ArrayList<Task> listOfValues) {
         for (int i = 0; i < listOfValues.size(); i++) {
             if (DailyTasc == listOfValues.get(i).getAppearsln()) {
