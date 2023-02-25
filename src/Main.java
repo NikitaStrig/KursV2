@@ -6,29 +6,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
 
-        Map<Integer, Task> taskMap = new HashMap<>();
+        Map<Integer, Task> taskMap = new ConcurrentHashMap<>(100);
         ArrayList<Task> deleteTaskHistory = new ArrayList<>();
         Date currentDate = new Date();
         LocalDateTime ldt = LocalDateTime.ofInstant(currentDate.toInstant(), ZoneId.systemDefault());
         LocalDate ldt1 = ldt.toLocalDate();
-        taskMap.put(Task.getIde(), new Task("sdsd", LocalDateTime.of(2023, 01, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.WeaklyTask));
-        taskMap.put(Task.getIde(), new Task("sdDDsd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", Appearsln.YearlyTask));
-        taskMap.put(Task.getIde(), new Task("sdFFFsd", LocalDateTime.of(2022, 04, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd",Appearsln. OneTimeTack));
-        taskMap.put(Task.getIde(), new Task("sdFFFsdddd", LocalDateTime.of(2022, 03, 23, 05, 00, 00), Type.WORK, "sdsdsdd", Appearsln.DailyTasc));
-
-     //   addTask(taskMap, ldt1);
-        gererikTask(taskMap);
+        taskMap.put(Task.getIde(), new Task("W", LocalDateTime.of(2023, 03, 21, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.WeaklyTask));
+        taskMap.put(Task.getIde(), new Task("Y2", LocalDateTime.of(2023, 03, 22, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.YearlyTask));
+        taskMap.put(Task.getIde(), new Task("W2", LocalDateTime.of(2023, 03, 23, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.WeaklyTask));
+        taskMap.put(Task.getIde(), new Task("D1", LocalDateTime.of(2023, 03, 24, 05, 00, 00), Type.WORK, "sdsdsdd", Appearsln.DailyTasc));
+        taskMap.put(Task.getIde(), new Task("O", LocalDateTime.of(2023, 03, 01, 05, 00, 00), Type.PERSONAL, "sdsdsdd",Appearsln. OneTimeTack));
+        taskMap.put(Task.getIde(), new Task("D2", LocalDateTime.of(2023, 03, 25, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.DailyTasc));
+        taskMap.put(Task.getIde(), new Task("M", LocalDateTime.of(2023, 03, 24, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.MonthlyTack));
+        taskMap.put(Task.getIde(), new Task("Y", LocalDateTime.of(2023, 03, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.YearlyTask));
+        addTask(taskMap, ldt1);
+        gener(taskMap);
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
-        for (int i = 0; i < listOfValues.size(); i++) {
-            System.out.println(listOfValues.get(i).getId() + " " + listOfValues.get(i));
-        }
-        // ByAllByDate(listOfValues,dateScan());
+         ByAllByDate(listOfValues,dateScan());
          //deleteTaskHistory(taskMap,deleteTaskHistory);
         // restoreTaskHistory(taskMap,deleteTaskHistory);
        // AperTimeTack(listOfValues);
@@ -145,18 +146,56 @@ public class Main {
         return formatDateTime;
     }
 
-    public static void gererikTask(Map<Integer, Task> taskMap){
-        for (int i = 0; i < 2 ; i++) {
+    public static void gererikTaskD(Map<Integer, Task> taskMap) {
             for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
                 if (task.getValue().getAppearsln() == Appearsln.DailyTasc) {
                     taskMap.put(Task.getIde(), new Task(task.getValue().getTitle(), task.getValue().getDateTime().plusDays(1),
                             task.getValue().getType(), task.getValue().getDeccription(), task.getValue().getAppearsln()));
                 }
-                // System.out.println(task.getKey() + " " + task.getValue());
+            }
+        }
+
+
+
+
+    public static void gererikTaskW(Map<Integer, Task> taskMap) {
+            for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
+                if (task.getValue().getAppearsln() == Appearsln.WeaklyTask) {
+                    taskMap.put(Task.getIde(), new Task(task.getValue().getTitle(), task.getValue().getDateTime().plusWeeks(1),
+                            task.getValue().getType(), task.getValue().getDeccription(), task.getValue().getAppearsln()));
+
+
+                }
+
+        }
+                }
+    public static void gererikTaskM(Map<Integer, Task> taskMap) {
+        for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
+            if (task.getValue().getAppearsln() == Appearsln.MonthlyTack) {
+                taskMap.put(Task.getIde(), new Task(task.getValue().getTitle(), task.getValue().getDateTime().plusMonths(1),
+                        task.getValue().getType(), task.getValue().getDeccription(), task.getValue().getAppearsln()));
+
 
             }
         }
     }
+    public static void gererikTaskY(Map<Integer, Task> taskMap) {
+        for (Map.Entry<Integer, Task> task : taskMap.entrySet()) {
+            if (task.getValue().getAppearsln() == Appearsln.YearlyTask) {
+                taskMap.put(Task.getIde(), new Task(task.getValue().getTitle(), task.getValue().getDateTime().plusYears(1),
+                        task.getValue().getType(), task.getValue().getDeccription(), task.getValue().getAppearsln()));
+
+
+            }
+        }
+    }
+                public static void gener(Map<Integer, Task> taskMap) {
+                        gererikTaskD(taskMap);
+                        gererikTaskW(taskMap);
+                        gererikTaskM(taskMap);
+                        gererikTaskY(taskMap);
+                    }
+
     public static void DailyTasc(Appearsln DailyTasc, ArrayList<Task> listOfValues) {
         for (int i = 0; i < listOfValues.size(); i++) {
             if (DailyTasc == listOfValues.get(i).getAppearsln()) {
@@ -264,7 +303,7 @@ public class Main {
         System.out.println("Введите ID задачи для востановления");
         int id = Integer.parseInt(scan.nextLine());
         for (int i = 0; i < historyDelete.size(); i++) {
-            taskMap.put(historyDelete.get(i).getId(), historyDelete.get(i));
+            taskMap.put(historyDelete.get(id).getId(), historyDelete.get(i));
             System.out.println("Востановлена задача задача с ID ");
             taskPrint(historyDelete);
         }
