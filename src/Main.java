@@ -25,6 +25,7 @@ public class Main {
         taskMap.put(Task.getIde(), new Task("D2", LocalDateTime.of(2023, 03, 25, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.DailyTasc));
         taskMap.put(Task.getIde(), new Task("M", LocalDateTime.of(2023, 03, 24, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.MonthlyTack));
         taskMap.put(Task.getIde(), new Task("Y", LocalDateTime.of(2023, 03, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.YearlyTask));
+        taskMap.put(Task.getIde(), new Task("D3", LocalDateTime.of(2023, 03, 25, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.DailyTasc));
         addTask(taskMap, ldt1);
         gener(taskMap);
         Collection<Task> values = taskMap.values();
