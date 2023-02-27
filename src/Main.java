@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 public class Main {
     public static void main(String[] args) {
 
-        Map<Integer, Task> taskMap = new ConcurrentHashMap<>(100);
+        Map<Integer, Task> taskMap = new ConcurrentHashMap<>(500);
         ArrayList<Task> deleteTaskHistory = new ArrayList<>();
         Date currentDate = new Date();
         LocalDateTime ldt = LocalDateTime.ofInstant(currentDate.toInstant(), ZoneId.systemDefault());
@@ -26,7 +26,7 @@ public class Main {
         taskMap.put(Task.getIde(), new Task("M", LocalDateTime.of(2023, 03, 24, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.MonthlyTack));
         taskMap.put(Task.getIde(), new Task("Y", LocalDateTime.of(2023, 03, 20, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.YearlyTask));
         taskMap.put(Task.getIde(), new Task("D3", LocalDateTime.of(2023, 03, 25, 05, 00, 00), Type.PERSONAL, "sdsdsdd", Appearsln.DailyTasc));
-        addTask(taskMap, ldt1);
+       // addTask(taskMap, ldt1);
         gener(taskMap);
         Collection<Task> values = taskMap.values();
         ArrayList<Task> listOfValues = new ArrayList<>(values);
