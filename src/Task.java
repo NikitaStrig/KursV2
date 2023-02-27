@@ -1,13 +1,25 @@
 import appearsln.Appearsln;
 
 import java.time.LocalDateTime;
-public class Task<A extends Appearsln>{
+import java.util.Objects;
+
+public class Task{
   private String title;
-  private int id;
+  private  int id;
   private LocalDateTime dateTime;
+  private Type type;
   private String deccription;
-  Appearsln appearsln;
-  static int ide = 1;
+  private Appearsln appearsln;
+ private static int ide = 1;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Task task = (Task) o;
+    return id == task.id && Objects.equals(title, task.title) && Objects.equals(dateTime, task.dateTime) && type == task.type && Objects.equals(deccription, task.deccription) && Objects.equals(appearsln, task.appearsln);
+  }
+
 
   public void setTitle(String title) {
     this.title = title;
@@ -18,27 +30,42 @@ public class Task<A extends Appearsln>{
     return title;
   }
 
-  public int getId() {
-    return id;
-  }
 
   public LocalDateTime getDateTime() {
     return dateTime;
+  }
+
+  public static int getIde() {
+    return ide;
+  }
+
+  public  int getId() {
+    return id;
   }
 
   public String getDeccription() {
     return deccription;
   }
 
-  public Task(String title, LocalDateTime dateTime, String deccription, A appearsln) {
+  public Type getType() {
+    return type;
+  }
+
+  public Task(String title, LocalDateTime dateTime, Type type, String deccription, Appearsln appearsln) {
     this.title = title;
+    if (this.title.equals(" ") || this.title == null) {
+      this.title = "Defoult";
+    }
     this.dateTime = dateTime;
+    this.type = type;
     this.deccription = deccription;
+    if (this.deccription.equals(" ") || this.deccription == null) {
+      this.deccription = "Defoult";
+    }
     this.appearsln = appearsln;
     this.id = ide;
     ide++;
   }
-
   @Override
   public int hashCode() {
     return super.hashCode();
@@ -55,9 +82,10 @@ public class Task<A extends Appearsln>{
   @Override
   public String toString() {
     return "Task{" +
-            ", title='" + title + '\'' +
+            " title='" + title + '\'' +
             ", dateTime=" + dateTime +
             ", deccription='" + deccription + '\'' +
+            ", Type='" + type + '\'' +
             '}';
   }
 }
